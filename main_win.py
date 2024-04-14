@@ -34,9 +34,14 @@ class MainWindow(QMainWindow):
         self.init_news()
 
     def init_news(self):
+        self.parameters = ["Разработка", "Маркетинг"]
         self.habr_parser = HabrParser()
-        self.news_text_edit.setEnabled(False)
-        self.news_text_edit.setPlainText("hello")
+        self.news_text_edit.setReadOnly(True)
+        text = self.habr_parser.parse(self.parameters[-1])
+        string = ""
+        for vacancy in text:
+            string += vacancy["title"] + "\n" + vacancy["salary"] + "\n" + vacancy["place"] + "\n" + vacancy["company"] + "\n\n"
+        self.news_text_edit.setPlainText(string)
 
     def search(self):
         text_for_pars = self.search_line_edit.text()
