@@ -30,7 +30,7 @@
         <item>
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Новости</string>
+           <string>Рекомендованные вакансии</string>
           </property>
          </widget>
         </item>
@@ -147,7 +147,7 @@ p, li { white-space: pre-wrap; }
                </font>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Город</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -185,7 +185,7 @@ p, li { white-space: pre-wrap; }
                </font>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Формат работы</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -223,7 +223,7 @@ p, li { white-space: pre-wrap; }
                </font>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Язык программирования</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -261,7 +261,7 @@ p, li { white-space: pre-wrap; }
                </font>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Зарплата</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignHCenter</set>
@@ -302,7 +302,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>Рекомендации</string>
+           <string>Руководство к трудоустройству</string>
           </property>
          </widget>
         </item>
@@ -358,17 +358,17 @@ p, li { white-space: pre-wrap; }
         </row>
         <column>
          <property name="text">
-          <string>название</string>
+          <string>Профессия</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>зп</string>
+          <string>Описание</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ссылка</string>
+          <string>Ссылка</string>
          </property>
         </column>
        </widget>

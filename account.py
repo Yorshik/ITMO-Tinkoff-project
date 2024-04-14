@@ -3,8 +3,6 @@ import sqlite3
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtWidgets
-from account import Account
-
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -14,11 +12,11 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     
 
 
-class MainWindow(QMainWindow):
+class Account(QMainWindow):
     def __init__(self, login):
         super().__init__()
-        uic.loadUi('main_win.ui', self)
-        self.setWindowTitle("Поиск вакансий")
+        uic.loadUi('account.ui', self)
+        self.setWindowTitle("Профиль")
 
         db_name = "users.sqlite"
         self.con = sqlite3.connect(db_name)
@@ -26,24 +24,15 @@ class MainWindow(QMainWindow):
         
         self.login = login
 
-        self.search_button.clicked.connect(self.search)
-        self.to_profile_button.clicked.connect(self.account)
+        self.hello_label.setText(f"Привет, {login}")
+        #self.favourite_edit
+        #self.history_edit
 
-    def search(self):
-        text_for_pars = self.search_line_edit.text()
-        if len(text_for_pars) < 5:
-            return
-        else:
-            """Парсим по запросу и выводим в таблицу"""
-            pass
 
-    def account(self):
-        self.acc_win = Account(self.login)
-        self.acc_win.show()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    plan = MainWindow()
+    plan = Account()
     plan.show()
     sys.exit(app.exec_())
