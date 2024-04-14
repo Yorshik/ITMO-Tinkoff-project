@@ -5,6 +5,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtWidgets
 from account import Account
+from descript_win import Description
 
 from habr_parse import HabrParser
 from hh_parse import HHParser
@@ -73,9 +74,14 @@ class MainWindow(QMainWindow):
             self.vacancy_table.setItem(i, 0, QtWidgets.QTableWidgetItem(f"{row['employer_name']}"))
             self.vacancy_table.setItem(i, 1, QtWidgets.QTableWidgetItem(f"{row['vacancy_name']}"))
             self.vacancy_table.setItem(i, 2, QtWidgets.QTableWidgetItem(f"{row['salary']}"))
-            self.vacancy_table.setItem(i, 3, QtWidgets.QTableWidgetItem(
-                bleach.clean(row['description'], tags=[], strip=True)))
+            btn = QtWidgets.QPushButton("Открыть")
+            btn.clicked.connect(lambda: self.open_desc((bleach.clean(row['description'], tags=[], strip=True))))
+            self.vacancy_table.setCellWidget(i, 3, btn)
             self.vacancy_table.setItem(i, 4, QtWidgets.QTableWidgetItem(row['link']))
+
+    def open_desc(self, text):
+        self.desc = Description(text)
+        self.desc.show()
 
     def account(self):
         self.acc_win = Account(self.login)
