@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtWidgets
 from account import Account
 
+from habr_parse import HabrParser
+
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -32,6 +34,7 @@ class MainWindow(QMainWindow):
         self.init_news()
 
     def init_news(self):
+        self.habr_parser = HabrParser()
         self.news_text_edit.setEnabled(False)
         self.news_text_edit.setPlainText("hello")
 
