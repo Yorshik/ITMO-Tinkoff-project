@@ -13,7 +13,6 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
     
 
-
 class MainWindow(QMainWindow):
     def __init__(self, login):
         super().__init__()
@@ -25,9 +24,16 @@ class MainWindow(QMainWindow):
         self.cur = self.con.cursor()
         
         self.login = login
+        self.initUI()
 
+    def initUI(self):
         self.search_button.clicked.connect(self.search)
         self.to_profile_button.clicked.connect(self.account)
+        self.init_news()
+
+    def init_news(self):
+        self.news_text_edit.setEnabled(False)
+        self.news_text_edit.setPlainText("hello")
 
     def search(self):
         text_for_pars = self.search_line_edit.text()
@@ -44,6 +50,6 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    plan = MainWindow()
+    plan = MainWindow("nikitka1")
     plan.show()
     sys.exit(app.exec_())
