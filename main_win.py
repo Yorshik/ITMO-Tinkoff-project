@@ -24,30 +24,22 @@ class MainWindow(QMainWindow):
         db_name = "users.sqlite"
         self.con = sqlite3.connect(db_name)
         self.cur = self.con.cursor()
-<<<<<<< HEAD
 
         self.login = login
 
         self.priorities = self.cur.execute(f"""SELECT priorities FROM logins WHERE login = '{self.login}'""").fetchall()[0][0].split()
         
-        print(self.priorities)
-
-=======
-
-        self.login = login
         self.initUI()
 
     def initUI(self):
->>>>>>> ecb4d79a2092cd396e46b0538c179399050fb43f
         self.search_button.clicked.connect(self.search)
         self.to_profile_button.clicked.connect(self.account)
         self.init_news()
 
     def init_news(self):
-        self.parameters = ["Разработка", "Маркетинг"]
         self.habr_parser = HabrParser()
         self.news_text_edit.setReadOnly(True)
-        text = self.habr_parser.parse(self.parameters[-1])
+        text = self.habr_parser.parse(self.priorities[-1])
         string = ""
         for vacancy in text:
             string += vacancy["title"] + "\n" + vacancy["salary"] + "\n" + vacancy["place"] + "\n" + vacancy["company"] + "\n\n"

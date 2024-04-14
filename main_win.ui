@@ -155,7 +155,28 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="city_box">
+              <item>
+               <property name="text">
+                <string>Не выбрано</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Москва</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Санкт-Петербург</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Казань</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
@@ -193,45 +214,38 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_4"/>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>10</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="font">
-               <font>
-                <pointsize>8</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Язык программирования</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-              </property>
+             <widget class="QComboBox" name="typework_box">
+              <item>
+               <property name="text">
+                <string>Не выбрано</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Полный день</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Сменный график</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Гибкий график</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Удаленная работа</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Вахтовый метод</string>
+               </property>
+              </item>
              </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_2"/>
             </item>
            </layout>
           </item>
@@ -269,7 +283,38 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_3"/>
+             <widget class="QComboBox" name="salary_box">
+              <item>
+               <property name="text">
+                <string>Не выбрано</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>От 10.000</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>От 20.000</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>От 30.000</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>От 40.000</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>От 50.000</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
