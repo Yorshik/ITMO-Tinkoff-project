@@ -46,8 +46,7 @@ class MainWindow(QMainWindow):
         self.search_button.clicked.connect(self.search)
 
     def initUI(self):
-        self.setStyleSheet('.QWidget {background-image: url(backgrounds/mainbg.jng);}')
-        style_for_btn = """background-color: rgb(255, 255, 255);\n
+        self.style_for_btn = """background-color: rgb(255, 255, 255);\n
         border-radius: 10px;\n
         \n
         }\n
@@ -73,8 +72,8 @@ class MainWindow(QMainWindow):
         """
 
         self.search_line_edit.setStyleSheet(style_for_edit)
-        self.to_profile_button.setStyleSheet(style_for_btn)
-        self.search_button.setStyleSheet(style_for_btn)
+        self.to_profile_button.setStyleSheet(self.style_for_btn)
+        self.search_button.setStyleSheet(self.style_for_btn)
         self.search_button.clicked.connect(self.search)
         self.search_button.clicked.connect(self.GPT_request)
         self.to_profile_button.clicked.connect(self.account)
@@ -117,8 +116,10 @@ class MainWindow(QMainWindow):
             self.vacancy_table.setItem(i, 1, QtWidgets.QTableWidgetItem(f"{row['vacancy_name']}"))
             self.vacancy_table.setItem(i, 2, QtWidgets.QTableWidgetItem(f"{row['salary']}"))
             btn = QtWidgets.QPushButton("Открыть")
+            btn.setStyleSheet(self.style_for_btn)
             btn.clicked.connect(lambda: self.open_desc((bleach.clean(row['description'], tags=[], strip=True))))
             btn2 = QtWidgets.QPushButton('Ссылка')
+            btn2.setStyleSheet(self.style_for_btn)
             btn2.clicked.connect(lambda: webbrowser.open(row['link']))
             self.vacancy_table.setCellWidget(i, 3, btn)
             self.vacancy_table.setCellWidget(i, 4, btn2)
