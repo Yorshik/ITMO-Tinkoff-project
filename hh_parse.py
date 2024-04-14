@@ -60,7 +60,13 @@ class HHParser:
     def filter_json(self, vacancy_json):
         name = vacancy_json['name']
         if vacancy_json['salary']:
-            salary = f"{vacancy_json['salary']['from']}-{vacancy_json['salary']['to']}"
+            sal = vacancy_json['salary']
+            if sal['from'] and not sal['to']:
+                salary = f'{sal["from"]}+'
+            elif not sal['from'] and sal['to']:
+                salary = f'до {sal["to"]}'
+            else:
+                salary = f"{vacancy_json['salary']['from']}-{vacancy_json['salary']['to']}"
         else:
             salary = 'заработная плата не указана'
         schedule = vacancy_json['schedule']['name']
@@ -79,13 +85,17 @@ class HHParser:
         }
 
     def set_filters(self, **kwargs):
-        for arg in ['per_page', 'text', 'schedule', 'only_with_salary', 'salary', 'city']:
+        self.arguments = {
+            'employment': 'probation',
+            'no_magic': False
+        }
+        for arg in ['text', 'schedule', 'salary', 'city']:
             if arg in kwargs:
                 if arg != 'city':
                     self.arguments[arg] = kwargs[arg]
                 else:
-                    self.arguments['top_lat'], self.arguments['bottom_lat'], self.arguments['right_lng'], \
-                    self.arguments['left_lng'] = self.get_coordinates(kwargs['city'])
+                    (self.arguments['top_lat'], self.arguments['bottom_lat'], self.arguments['right_lng'],
+                     self.arguments['left_lng']) = self.get_coordinates(kwargs['city'])
 
 
 if __name__ == '__main__':
