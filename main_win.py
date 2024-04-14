@@ -1,3 +1,4 @@
+import bleach
 import sys
 import sqlite3
 from PyQt5 import uic
@@ -37,6 +38,7 @@ class MainWindow(QMainWindow):
         self.search_button.clicked.connect(self.search)
         self.to_profile_button.clicked.connect(self.account)
         self.init_news()
+        self.init_vacancies()
 
     def init_news(self):
         self.habr_parser = HabrParser()
@@ -44,7 +46,8 @@ class MainWindow(QMainWindow):
         text = self.habr_parser.parse(self.priorities[-1])
         string = ""
         for vacancy in text:
-            string += vacancy["title"] + "\n" + vacancy["salary"] + "\n" + vacancy["place"] + "\n" + vacancy["company"] + "\n\n"
+            string += vacancy["title"] + "\n" + vacancy["salary"] + "\n" + vacancy["place"] + "\n" + vacancy[
+                "company"] + "\n\n"
         self.news_text_edit.setPlainText(string)
 
     def init_vacancies(self):
@@ -63,6 +66,24 @@ class MainWindow(QMainWindow):
             self.recommendations_text_edit.setText(text)
             """Парсим по запросу и выводим в таблицу"""
             pass
+        """Парсим по запросу и выводим в таблицу"""
+        args = {}
+        if self.city_box.currentText() != 'Не выбрано':
+            args['city'] = self.city_box.currentText()
+        if self.typework_box.currentText() != 'Не выбрано':
+            args['schedule'] = self.typework_box.currentText()
+        if self.salary_box.currentText() != 'Не выбрано':
+            args['salary'] = self.salary_box.currentText()
+        self.hh_parser.set_filters(**args)
+        vacancies = self.hh_parser.parse_vacancies()
+        self.vacancy_table.setRowCount(len(vacancies))
+        for i, row in enumerate(vacancies):
+            self.vacancy_table.setItem(i, 0, QtWidgets.QTableWidgetItem(f"{row['employer_name']}"))
+            self.vacancy_table.setItem(i, 1, QtWidgets.QTableWidgetItem(f"{row['vacancy_name']}"))
+            self.vacancy_table.setItem(i, 2, QtWidgets.QTableWidgetItem(f"{row['salary']}"))
+            self.vacancy_table.setItem(i, 3, QtWidgets.QTableWidgetItem(
+                bleach.clean(row['description'], tags=[], strip=True)))
+            self.vacancy_table.setItem(i, 4, QtWidgets.QTableWidgetItem(row['link']))
 
     def account(self):
         self.acc_win = Account(self.login)
