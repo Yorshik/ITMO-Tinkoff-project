@@ -2,7 +2,7 @@ import sys
 import sqlite3
 import hashlib
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QGroupBox
 from PyQt5 import QtCore, QtWidgets
 from main_win import MainWindow
 
@@ -24,6 +24,10 @@ class Registration(QMainWindow):
         self.con = sqlite3.connect(db_name)
         self.cur = self.con.cursor()
         self.reg_btn.clicked.connect(self.reg)
+
+        self.list_of_checkboxes = [self.dev, self.testing, self.administration, self.management,
+                               self.design, self.analytics, self.marketing]
+
 
         style_for_edit = """
 QLineEdit {
@@ -62,9 +66,10 @@ border: 2px solid #35544C;
                 return
             
             hashed_password = hashlib.sha1(f"{self.passwordEdit.text()}".encode())
-            params = (self.nameEdit.text(), hashed_password.hexdigest())
-            self.cur.execute(f"""INSERT INTO logins ('login', 'password')
-                                          VALUES (?, ?)""", params).fetchall()
+            prior = " ".join([elem.text() for elem in self.list_of_checkboxes if elem.isChecked()])
+            params = (self.nameEdit.text(), hashed_password.hexdigest(), prior)
+            self.cur.execute(f"""INSERT INTO logins ('login', 'password', 'priorities')
+                                          VALUES (?, ?, ?)""", params).fetchall()
             self.con.commit()
             self.main_win = MainWindow(self.nameEdit.text())
             self.main_win.show()

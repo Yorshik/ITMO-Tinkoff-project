@@ -23,8 +23,12 @@ class MainWindow(QMainWindow):
         db_name = "users.sqlite"
         self.con = sqlite3.connect(db_name)
         self.cur = self.con.cursor()
-        
+
         self.login = login
+
+        self.priorities = self.cur.execute(f"""SELECT priorities FROM logins WHERE login = '{self.login}'""").fetchall()[0][0].split()
+        
+        print(self.priorities)
 
         self.search_button.clicked.connect(self.search)
         self.to_profile_button.clicked.connect(self.account)

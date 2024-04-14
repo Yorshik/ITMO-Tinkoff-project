@@ -19,7 +19,7 @@
      <rect>
       <x>310</x>
       <y>0</y>
-      <width>211</width>
+      <width>301</width>
       <height>61</height>
      </rect>
     </property>
@@ -39,7 +39,7 @@
     <property name="geometry">
      <rect>
       <x>294</x>
-      <y>170</y>
+      <y>120</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -49,7 +49,7 @@
     <property name="geometry">
      <rect>
       <x>244</x>
-      <y>150</y>
+      <y>100</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -68,7 +68,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>260</y>
+      <y>210</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -78,7 +78,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>240</y>
+      <y>190</y>
       <width>51</width>
       <height>21</height>
      </rect>
@@ -97,7 +97,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>330</y>
+      <y>410</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -118,7 +118,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>90</y>
+      <y>60</y>
       <width>231</width>
       <height>31</height>
      </rect>
@@ -133,6 +133,97 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="dev">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>270</y>
+      <width>101</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Разработка</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="testing">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>111</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Тестирование</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="analytics">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>330</y>
+      <width>111</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Аналитика</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="management">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>360</y>
+      <width>101</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Менеджмент</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="design">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>300</y>
+      <width>91</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Дизайн</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="marketing">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>270</y>
+      <width>121</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Маркетинг</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="administration">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>330</y>
+      <width>151</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Администрирование</string>
     </property>
    </widget>
   </widget>
