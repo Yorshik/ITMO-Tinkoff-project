@@ -326,13 +326,16 @@ p, li { white-space: pre-wrap; }
            <number>0</number>
           </property>
           <item>
-           <spacer name="horizontalSpacer_3">
+           <spacer name="horizontalSpacer_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>250</width>
               <height>20</height>
              </size>
             </property>
@@ -340,22 +343,26 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <widget class="QPushButton" name="save_btn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>646</width>
-              <height>34</height>
-             </size>
-            </property>
             <property name="text">
              <string>Применить</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>250</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -400,7 +407,7 @@ p, li { white-space: pre-wrap; }
           </property>
           <property name="minimumSize">
            <size>
-            <width>400</width>
+            <width>300</width>
             <height>0</height>
            </size>
           </property>
@@ -417,7 +424,7 @@ p, li { white-space: pre-wrap; }
          <bool>false</bool>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>255</number>
+         <number>186</number>
         </attribute>
         <attribute name="horizontalHeaderMinimumSectionSize">
          <number>39</number>
