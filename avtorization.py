@@ -14,7 +14,6 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
     
 
-
 class Avtorization(QMainWindow):
     def __init__(self):
         super().__init__()

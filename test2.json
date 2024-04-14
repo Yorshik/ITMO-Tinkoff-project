@@ -1,0 +1,97 @@
+{
+  "id": "95311669",
+  "premium": false,
+  "billing_type": {
+    "id": "standard",
+    "name": "Стандарт"
+  },
+  "relations": [],
+  "name": "Диспетчер чатов (в Яндекс)",
+  "insider_interview": null,
+  "response_letter_required": false,
+  "area": {
+    "id": "113",
+    "name": "Россия",
+    "url": "https://api.hh.ru/areas/113?host=hh.ru"
+  },
+  "salary": {
+    "from": 30000,
+    "to": 44000,
+    "currency": "RUR",
+    "gross": true
+  },
+  "type": {
+    "id": "open",
+    "name": "Открытая"
+  },
+  "address": null,
+  "allow_messages": true,
+  "experience": {
+    "id": "noExperience",
+    "name": "Нет опыта"
+  },
+  "schedule": {
+    "id": "remote",
+    "name": "Удаленная работа"
+  },
+  "employment": {
+    "id": "full",
+    "name": "Полная занятость"
+  },
+  "department": null,
+  "contacts": null,
+  "description": "<p>Постройте вашу карьеру в Яндекс. Необходимо будет заполнить небольшую анкету, после чего с вами свяжутся для интервью.</p> <p><strong>Кого ищем?</strong></p> <p>Специалиста поддержки в сервисы Яндекс Go. Мы консультируем пользователей в чатах и по телефону, помогаем им по любым вопросам и решаем конфликтные ситуации. Делаем это и днем, и ночью (на выбор, конечно). Это удаленная работа на полный день за компьютером.</p> <p><strong>Что предстоит делать:</strong></p> <ul> <li>работать с клиентами или партнерами для решения разнообразных ситуаций;</li> <li>совершать звонки по их обращениям и давать письменные ответы;</li> <li>развивать процессы и инструменты для улучшения качества сервисов</li> </ul> <p><strong>Мы ищем человека, который:</strong></p> <ul> <li>способен работать в команде;</li> <li>способен принимать решения самостоятельно;</li> <li>готов учиться и узнавать новое.</li> </ul> <p><strong>Плюсами будут:</strong></p> <ul> <li>опыт работы в колл-центре или службе поддержки;</li> <li>желание расти и развиваться;</li> <li>широкий кругозор и чувство юмора :).</li> </ul> <p><strong>Условия:</strong></p> <ul> <li> <p><strong>Можно зарабатывать 30.000-35.000 рублей при перевыполнении плана;</strong></p> </li> <li>работа на дому на своем оборудовании (компьютер или ноутбук);</li> <li>оформление по ТК РФ;</li> <li>график 2/2/3 (день/ночь на выбор. Уточнение по графику: на одной неделе: ПН, ВТ – рабочие, СР, ЧТ – выходные, ПТ, СБ, ВС – рабочие, на второй неделе наоборот: ПН, ВТ – выходные, СР, ЧТ – рабочие, ПТ, СБ, ВС – выходные).</li> <li>удаленное оплачиваемое обучение, тренинги.</li> <li>отличную команду руководителей и наставников;</li> <li>возможность карьерного роста и развития;</li> <li>возможность самостоятельно влиять на свой доход.</li> </ul> <p>Для рассмотрения на вакансию, нажмите на кнопку <strong>&quot;Откликнуться&quot;</strong>, мы предложим выполнить небольшой тест. Он поможет определить, насколько вакансия хорошо подходит именно вам.</p> <p>Мы будем рады рассмотреть как специалистов с опытом работы в таких компаниях, как МТС, Билайн, Мегафон, Сбербанк, Открытие, Тинькофф, Евросеть, Связной, М. Видео, Lamoda, так и кандидатов без опыта работы.</p> <p>В случае успешного выполнения заданий с вами свяжется рекрутер и обозначит дальнейшие шаги. Мы ждем вас!</p> <p><em>Данную работу не получится совмещать с работой Яндекс.Go</em></p> <p># удаленная работа # работа из дома # работа дистанционно # удаленка # специалист поддержки # специалист по работе с клиентами # менеджер по работе с клиентами # оператор пк # без опыта # начинающий специалист # специалист</p>",
+  "branded_description": null,
+  "vacancy_constructor_template": null,
+  "key_skills": [],
+  "accept_handicapped": false,
+  "accept_kids": false,
+  "archived": false,
+  "response_url": null,
+  "specializations": [],
+  "professional_roles": [
+    {
+      "id": "40",
+      "name": "Другое"
+    }
+  ],
+  "code": null,
+  "hidden": false,
+  "quick_responses_allowed": false,
+  "driver_license_types": [],
+  "accept_incomplete_resumes": true,
+  "employer": {
+    "id": "9498120",
+    "name": "Яндекс Команда для бизнеса",
+    "url": "https://api.hh.ru/employers/9498120?host=hh.ru",
+    "alternate_url": "https://hh.ru/employer/9498120",
+    "logo_urls": {
+      "original": "https://img.hhcdn.ru/employer-logo-original/1121425.jpg",
+      "90": "https://img.hhcdn.ru/employer-logo/6106293.jpeg",
+      "240": "https://img.hhcdn.ru/employer-logo/6106294.jpeg"
+    },
+    "vacancies_url": "https://api.hh.ru/vacancies?employer_id=9498120&host=hh.ru",
+    "accredited_it_employer": false,
+    "trusted": true
+  },
+  "published_at": "2024-03-22T17:55:30+0300",
+  "created_at": "2024-03-22T17:55:30+0300",
+  "initial_created_at": "2024-03-22T17:55:30+0300",
+  "negotiations_url": null,
+  "suitable_resumes_url": null,
+  "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=95311669",
+  "has_test": false,
+  "test": null,
+  "alternate_url": "https://hh.ru/vacancy/95311669",
+  "working_days": [],
+  "working_time_intervals": [],
+  "working_time_modes": [
+    {
+      "id": "start_after_sixteen",
+      "name": "Можно начинать работать после 16:00"
+    }
+  ],
+  "accept_temporary": false,
+  "languages": [],
+  "approved": true
+}
