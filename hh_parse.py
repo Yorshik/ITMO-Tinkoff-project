@@ -1,5 +1,4 @@
 import json
-import pprint
 
 import requests
 
@@ -11,6 +10,19 @@ class HHParser:
             'no_magic': False
         }
         self.url = 'https://api.hh.ru/vacancies'
+        self.yandex_geocoder = 'https://geocode-maps.yandex.ru/1.x/'
+        self.yandex_apikey = '40d1649f-0493-4b70-98ba-98533de7710b'
+
+    def get_coordinates(self, city):
+        req = requests.get(f'{self.yandex_geocoder}?apikey={self.yandex_apikey}&format=json&geocode={city}')
+        if not req:
+            print(req.status_code, req.reason)
+            return False
+        js = req.json()
+        toponym = js["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
+        left_lng, bottom_lat = toponym['boundedBy']['Envelope']['lowerCorner'].split()
+        right_lng, top_lat = toponym['boundedBy']['Envelope']['upperCorner'].split()
+        return top_lat, bottom_lat, right_lng, left_lng
 
     def get_vacancies(self):
         res = requests.get(url=self.url, params=self.arguments)
@@ -67,15 +79,19 @@ class HHParser:
         }
 
     def set_filters(self, **kwargs):
-        for arg in ['per_page', 'text', 'schedule', 'only_with_salary', 'salary', 'top_lat', 'bottom_lat', 'left_lng',
-                    'right_lng']:
+        for arg in ['per_page', 'text', 'schedule', 'only_with_salary', 'salary', 'city']:
             if arg in kwargs:
-                self.arguments[arg] = kwargs[arg]
+                if arg != 'city':
+                    self.arguments[arg] = kwargs[arg]
+                else:
+                    self.arguments['top_lat'], self.arguments['bottom_lat'], self.arguments['right_lng'], \
+                    self.arguments['left_lng'] = self.get_coordinates(kwargs['city'])
 
 
 if __name__ == '__main__':
     obj = HHParser()
-    vacancies = obj.parse_vacancies()
+    # vacancies = obj.parse_vacancies()
     # pprint.pprint(vacancies)
-    with open('test3.json', 'w', encoding='utf-8') as new_file:
-        json.dump(vacancies, new_file, ensure_ascii=False)
+    # with open('test3.json', 'w', encoding='utf-8') as new_file:
+    #     json.dump(vacancies, new_file, ensure_ascii=False)
+    print(obj.get_coordinates('Санкт-Петербург'))

@@ -6,14 +6,14 @@ from PyQt5 import QtCore, QtWidgets
 from account import Account
 
 from habr_parse import HabrParser
-
+from hh_parse import HHParser
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-    
+
 
 class MainWindow(QMainWindow):
     def __init__(self, login):
@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         db_name = "users.sqlite"
         self.con = sqlite3.connect(db_name)
         self.cur = self.con.cursor()
-        
+
         self.login = login
         self.initUI()
 
@@ -38,9 +38,15 @@ class MainWindow(QMainWindow):
         self.news_text_edit.setEnabled(False)
         self.news_text_edit.setPlainText("hello")
 
+    def init_vacancies(self):
+        self.hh_parser = HHParser()
+
+    def set_filters(self):
+        self.hh_parser.set_filters()  # TODO get filters
+
     def search(self):
         text_for_pars = self.search_line_edit.text()
-        if len(text_for_pars) < 5:
+        if len(text_for_pars) < 2:
             return
         else:
             """Парсим по запросу и выводим в таблицу"""
