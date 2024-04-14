@@ -1,3 +1,5 @@
+import webbrowser
+
 import bleach
 import sys
 import sqlite3
@@ -17,6 +19,13 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
+schedule_matches = {
+    'Полный день': 'fullDay',
+    'Сменный график': 'shift',
+    'Гибкий график': 'flexible',
+    'Удаленная работа': 'remote',
+    'Вахтовый метод': 'flyInFlyOut'
+}
 
 class MainWindow(QMainWindow):
     def __init__(self, login):
@@ -37,6 +46,7 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
         self.search_button.clicked.connect(self.search)
+        self.search_button.clicked.connect(self.GPT_request)
         self.to_profile_button.clicked.connect(self.account)
         self.init_news()
         self.init_vacancies()
@@ -61,20 +71,14 @@ class MainWindow(QMainWindow):
         text_for_pars = self.search_line_edit.text()
         if len(text_for_pars) < 2:
             return
-        else:
-            account = YandexGPTLite('b1gkod9fr73tfg0e4mrl', 'y0_AgAAAAAy_SMVAATuwQAAAAEB6K5tAAAPCIKUDadLH5774KDpceA82ll8Tw')
-            text = account.create_completion(f'Напиши короткую рекомендацию из трех пунктов как подготовиться к собеседованию на работу {text_for_pars}', '0.3')
-            self.recommendations_text_edit.setText(text)
-            """Парсим по запросу и выводим в таблицу"""
-            pass
         """Парсим по запросу и выводим в таблицу"""
-        args = {}
+        args = {'text': text_for_pars}
         if self.city_box.currentText() != 'Не выбрано':
             args['city'] = self.city_box.currentText()
         if self.typework_box.currentText() != 'Не выбрано':
-            args['schedule'] = self.typework_box.currentText()
+            args['schedule'] = schedule_matches[self.typework_box.currentText()]
         if self.salary_box.currentText() != 'Не выбрано':
-            args['salary'] = self.salary_box.currentText()
+            args['salary'] = format_salary(self.salary_box.currentText())
         self.hh_parser.set_filters(**args)
         vacancies = self.hh_parser.parse_vacancies()
         self.vacancy_table.setRowCount(len(vacancies))
@@ -84,16 +88,32 @@ class MainWindow(QMainWindow):
             self.vacancy_table.setItem(i, 2, QtWidgets.QTableWidgetItem(f"{row['salary']}"))
             btn = QtWidgets.QPushButton("Открыть")
             btn.clicked.connect(lambda: self.open_desc((bleach.clean(row['description'], tags=[], strip=True))))
+            btn2 = QtWidgets.QPushButton('Ссылка')
+            btn2.clicked.connect(lambda: webbrowser.open(row['link']))
             self.vacancy_table.setCellWidget(i, 3, btn)
-            self.vacancy_table.setItem(i, 4, QtWidgets.QTableWidgetItem(row['link']))
+            self.vacancy_table.setCellWidget(i, 4, btn2)
 
     def open_desc(self, text):
         self.desc = Description(text)
         self.desc.show()
 
+    def GPT_request(self):
+        text_for_pars = self.search_line_edit.text()
+        if len(text_for_pars) < 2:
+            return
+        account = YandexGPTLite('b1gkod9fr73tfg0e4mrl', 'y0_AgAAAAAy_SMVAATuwQAAAAEB6K5tAAAPCIKUDadLH5774KDpceA82ll8Tw')
+        text = account.create_completion(
+            f'Напиши короткую рекомендацию из трех пунктов как подготовиться к собеседованию на работу {text_for_pars}',
+            '0.3')
+        self.recommendations_text_edit.setText(text)
+
     def account(self):
         self.acc_win = Account(self.login)
         self.acc_win.show()
+
+
+def format_salary(sal):
+    return int(sal[3:].replace('.', ''))
 
 
 if __name__ == '__main__':
