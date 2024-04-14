@@ -27,6 +27,7 @@ schedule_matches = {
     'Вахтовый метод': 'flyInFlyOut'
 }
 
+
 class MainWindow(QMainWindow):
     def __init__(self, login):
         super().__init__()
@@ -45,6 +46,35 @@ class MainWindow(QMainWindow):
         self.search_button.clicked.connect(self.search)
 
     def initUI(self):
+        self.setStyleSheet('.QWidget {background-image: url(backgrounds/mainbg.jng);}')
+        style_for_btn = """background-color: rgb(255, 255, 255);\n
+        border-radius: 10px;\n
+        \n
+        }\n
+        QPushButton:hover{    \n
+            background-color: rgb(255,204,0);\n
+            effect = QtWidgets.QGraphicsDropShadowEffect(QPushButton)\n
+            effect.setOffset(0, 0)\n
+            effect.setBlurRadius(20)\n
+            effect.setColor(QColor(57, 219, 255))\n
+            QPushButton.setGraphicsEffect(effect)
+            border-radius: 48px;        /* круглый */
+        border: 2px solid #35544C;
+        """
+
+        style_for_edit = """
+        QLineEdit {
+            font: 12pt "Rockwell Condensend";
+            border-radius: 15px;
+            border: 2px solid rgb(55, 55, 55);
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        """
+
+        self.search_line_edit.setStyleSheet(style_for_edit)
+        self.to_profile_button.setStyleSheet(style_for_btn)
+        self.search_button.setStyleSheet(style_for_btn)
         self.search_button.clicked.connect(self.search)
         self.search_button.clicked.connect(self.GPT_request)
         self.to_profile_button.clicked.connect(self.account)
