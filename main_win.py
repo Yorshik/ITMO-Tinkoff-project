@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         self.search_button.clicked.connect(self.search)
 
     def initUI(self):
+        self.vacancy_table.setStyleSheet('.QTableWidget {background-image: url(backgrounds/mainbg.png);}')
         self.style_for_btn = """background-color: rgb(255, 255, 255);\n
         border-radius: 10px;\n
         \n
