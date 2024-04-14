@@ -3,6 +3,7 @@ import sqlite3
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtWidgets
+from yandexgptlite import YandexGPTLite
 from account import Account
 
 from habr_parse import HabrParser
@@ -30,6 +31,7 @@ class MainWindow(QMainWindow):
         self.priorities = self.cur.execute(f"""SELECT priorities FROM logins WHERE login = '{self.login}'""").fetchall()[0][0].split()
         
         self.initUI()
+        self.search_button.clicked.connect(self.search)
 
     def initUI(self):
         self.search_button.clicked.connect(self.search)
@@ -56,6 +58,9 @@ class MainWindow(QMainWindow):
         if len(text_for_pars) < 2:
             return
         else:
+            account = YandexGPTLite('b1gkod9fr73tfg0e4mrl', 'y0_AgAAAAAy_SMVAATuwQAAAAEB6K5tAAAPCIKUDadLH5774KDpceA82ll8Tw')
+            text = account.create_completion(f'Напиши короткую рекомендацию из трех пунктов как подготовиться к собеседованию на работу {text_for_pars}', '0.3')
+            self.recommendations_text_edit.setText(text)
             """Парсим по запросу и выводим в таблицу"""
             pass
 
